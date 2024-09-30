@@ -18,7 +18,8 @@ permissions:
   pull-requests: write
 
 env:
-
+  PHP: '8.2'
+  
 jobs:
   docs:
     if: ${{ github.event_name == 'pull_request' }}
