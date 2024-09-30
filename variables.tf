@@ -86,3 +86,9 @@ variable "private_dns_zones" {
   description = "list of private dns zones"
   default     = []
 }
+
+variable "enable_bastion" {
+  type = bool
+  description = "deploy bastion inside hub network"
+  default = false
+}
