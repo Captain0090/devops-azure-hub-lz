@@ -7,7 +7,7 @@ variable "project_name" {
 variable "environment" {
   type        = string
   description = "Name of the environment such as dev,UAT or prod"
-  default     = "connectivity"
+  default     = "connect"
 }
 
 variable "location" {
