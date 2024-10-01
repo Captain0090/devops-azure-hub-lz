@@ -37,7 +37,7 @@
 | <a name="input_bastion_name"></a> [bastion\_name](#input\_bastion\_name) | (Required) Specifies the name of the Bastion Host. Changing this forces a new resource to be created | `string` | n/a | yes |
 | <a name="input_bastion_pip"></a> [bastion\_pip](#input\_bastion\_pip) | name of the public ip that will be created for bastion host. | `string` | n/a | yes |
 | <a name="input_enable_bastion"></a> [enable\_bastion](#input\_enable\_bastion) | deploy bastion inside hub network | `bool` | `false` | no |
-| <a name="input_environment"></a> [environment](#input\_environment) | Name of the environment such as dev,UAT or prod | `string` | `"connectivity"` | no |
+| <a name="input_environment"></a> [environment](#input\_environment) | Name of the environment such as dev,UAT or prod | `string` | `"connect"` | no |
 | <a name="input_location"></a> [location](#input\_location) | The location/region where the resource group/resources is created. Changing this forces a new resource to be created. | `string` | n/a | yes |
 | <a name="input_private_dns_zones"></a> [private\_dns\_zones](#input\_private\_dns\_zones) | list of private dns zones | `list(string)` | `[]` | no |
 | <a name="input_project_name"></a> [project\_name](#input\_project\_name) | Name of project for which the infra will create. | `string` | `"hub"` | no |
