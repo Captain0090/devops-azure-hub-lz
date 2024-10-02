@@ -83,20 +83,20 @@ variable "private_dns_zones" {
 }
 
 variable "enable_bastion" {
-  type = bool
+  type        = bool
   description = "deploy bastion inside hub network"
-  default = false
+  default     = false
 }
 
 variable "deploy_jumpbox" {
-  type = bool
+  type        = bool
   description = "deploy jumpbox server."
-  default = false
+  default     = false
 }
 
 variable "vm_configuration" {
   type = object({
-    nic_name       = optional(string)
+    nic_name                      = optional(string)
     nic_ip_config_name            = optional(string)
     enable_ip_forwarding          = optional(bool, false)
     private_ip_address_allocation = optional(string)

@@ -2,7 +2,7 @@ locals {
   locationshortname = {
     germanywestcentral = "gwc"
   }
-  resource_name_suffix = "${var.environment}-try(local.locationshortname["germanywestcentral"],${var.location})-001"
+  resource_name_suffix = "${var.environment}-${try(local.locationshortname["germanywestcentral"], "${var.location}")}-001"
 
   tags = {
     Environment = var.environment

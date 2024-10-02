@@ -24,8 +24,8 @@ VirtualNetworks = {
 
 # bastion
 enable_bastion = true
-bastion_name = "bastion-hub-connectivity-gwc-001"
-bastion_pip  = "pip-hub-connectivity-gwc-001"
+bastion_name   = "bastion-hub-connectivity-gwc-001"
+bastion_pip    = "pip-hub-connectivity-gwc-001"
 
 #jump server
 vm_configuration = {

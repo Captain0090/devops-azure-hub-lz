@@ -32,14 +32,14 @@ resource "azurerm_windows_virtual_machine" "this" {
     version   = var.source_image_reference.version
   }
 
- dynamic "plan" {
-  for_each = var.plan != null ? ["plan"] : []
-  content {
-    name      = plan.value.name
-    product   = plan.value.product
-    publisher = plan.value.publisher
+  dynamic "plan" {
+    for_each = var.plan != null ? ["plan"] : []
+    content {
+      name      = plan.value.name
+      product   = plan.value.product
+      publisher = plan.value.publisher
+    }
   }
- }
 
   os_disk {
     storage_account_type      = var.os_disk.storage_account_type
@@ -84,8 +84,8 @@ resource "azurerm_marketplace_agreement" "this" {
 
 resource "azurerm_virtual_machine_extension" "aad_login" {
   name                 = "AADLogin"
-  virtual_machine_id   =  azurerm_windows_virtual_machine.this.id
+  virtual_machine_id   = azurerm_windows_virtual_machine.this.id
   publisher            = "Microsoft.Azure.ActiveDirectory"
-  type                 = "AADLoginForWindows" 
-  type_handler_version = "1.3" 
+  type                 = "AADLoginForWindows"
+  type_handler_version = "1.3"
 }
