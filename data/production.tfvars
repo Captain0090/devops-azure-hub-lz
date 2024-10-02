@@ -9,13 +9,13 @@ VirtualNetworks = {
       bastion = {
         name             = "snet-bastion"
         address_prefixes = ["10.68.0.128/26"]
-        nsg_rules        = "nsg-bastion-hub-connectivity-eastus-001"
+        nsg_rules        = "nsg-bastion-hub-connectivity-gwc-001"
         nsg_rules        = []
       }
       vm = {
         name             = "snet-vm"
         address_prefixes = ["10.68.2.0/28"]
-        nsg_rules        = "nsg-bastion-hub-connectivity-eastus-001"
+        nsg_rules        = "nsg-vm-hub-connectivity-gwc-001"
         nsg_rules        = []
       }
     }
@@ -24,8 +24,8 @@ VirtualNetworks = {
 
 # bastion
 enable_bastion = true
-bastion_name = "bastion-hub-connectivity-eastus-001"
-bastion_pip  = "pip-hub-connectivity-eastus-001"
+bastion_name = "bastion-hub-connectivity-gwc-001"
+bastion_pip  = "pip-hub-connectivity-gwc-001"
 
 #jump server
 vm_configuration = {

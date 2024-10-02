@@ -1,8 +1,3 @@
-variable "project_name" {
-  type        = string
-  default     = "cityagenda"
-  description = "Name of project for which the infra will create."
-}
 
 variable "environment" {
   type        = string
