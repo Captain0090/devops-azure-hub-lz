@@ -106,16 +106,16 @@ VirtualNetworks = {
         name             = "snet-vm"
         address_prefixes = ["10.68.2.0/28"]
         nsg_name         = "nsg-vm-hub-connectivity-gwc-001"
-        nsg_rules        = [{
-            name                       = "AllowBastionRDPInbound"
-            priority                   = "100"
-            direction                  = "Inbound"
-            access                     = "Allow"
-            protocol                   = "TCP"
-            source_port_range          = "3389"
-            source_address_prefix      = "10.68.0.128/26"
-            destination_port_range     = "*"
-            destination_address_prefix = "10.68.2.0/28"
+        nsg_rules = [{
+          name                       = "AllowBastionRDPInbound"
+          priority                   = "100"
+          direction                  = "Inbound"
+          access                     = "Allow"
+          protocol                   = "TCP"
+          source_port_range          = "3389"
+          source_address_prefix      = "10.68.0.128/26"
+          destination_port_range     = "*"
+          destination_address_prefix = "10.68.2.0/28"
           },
           {
             name                       = "DenyInbound"
@@ -128,7 +128,7 @@ VirtualNetworks = {
             destination_port_range     = "*"
             destination_address_prefix = "10.68.2.0/28"
           }
-          ]
+        ]
       }
     }
   }
