@@ -16,7 +16,17 @@ VirtualNetworks = {
         name             = "snet-vm"
         address_prefixes = ["10.68.2.0/28"]
         nsg_name         = "nsg-vm-hub-connectivity-gwc-001"
-        nsg_rules        = []
+        nsg_rules        = [{
+            name                       = "AllowHttpsInbound"
+            priority                   = 120
+            direction                  = "Inbound"
+            access                     = "Allow"
+            protocol                   = "Tcp"
+            source_port_range          = "*"
+            source_address_prefix      = "Internet"
+            destination_port_range     = 443
+            destination_address_prefix = "*"
+          }]
       }
     }
   }
