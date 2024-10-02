@@ -92,3 +92,61 @@ variable "enable_bastion" {
   description = "deploy bastion inside hub network"
   default = false
 }
+
+variable "deploy_jumpbox" {
+  type = bool
+  description = "deploy jumpbox server."
+  default = false
+}
+
+variable "vm_configuration" {
+  type = object({
+    nic_name       = optional(string)
+    nic_ip_config_name            = optional(string)
+    enable_ip_forwarding          = optional(bool, false)
+    private_ip_address_allocation = optional(string)
+    admin_username                = optional(string)
+    enable_automatic_updates      = optional(bool, true)
+    encryption_at_host_enabled    = optional(bool, false)
+    license_type                  = optional(string)
+    vm_name                       = optional(string)
+    provision_vm_agent            = optional(bool, true)
+    vm_size                       = optional(string)
+    vm_zone                       = optional(string)
+    managed_identity_type         = optional(string, "SystemAssigned")
+    kv_disk_encryption_name       = optional(string)
+    source_image_reference = optional(object({
+      publisher = optional(string)
+      offer     = optional(string)
+      sku       = optional(string)
+      version   = optional(string)
+    }), {})
+    plan = optional(object({
+      publisher = optional(string, null)
+      name      = optional(string, null)
+      product   = optional(string, null)
+    }), {})
+    os_disk = optional(object({
+      name                      = optional(string, null)
+      storage_account_type      = optional(string, null)
+      size_gb                   = optional(number, null)
+      caching                   = optional(string, "ReadWrite")
+      write_accelerator_enabled = optional(bool, false)
+    }), {})
+    data_disks = optional(map(object({
+      name                 = optional(string, null)
+      storage_account_type = optional(string, null)
+      disk_size_gb         = optional(number, null)
+      caching              = optional(string, "ReadWrite")
+    })), {})
+  })
+  description = "(optional) The details of virtual machine."
+  default     = {}
+}
+
+variable "vm_password" {
+  type        = string
+  sensitive   = true
+  description = "VM Password"
+  default     = "P@ssword@!2024"
+}
