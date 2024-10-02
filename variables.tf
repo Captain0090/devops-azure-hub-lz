@@ -1,13 +1,13 @@
 variable "project_name" {
   type        = string
-  default     = "hub"
+  default     = "cityagenda"
   description = "Name of project for which the infra will create."
 }
 
 variable "environment" {
   type        = string
   description = "Name of the environment such as dev,UAT or prod"
-  default     = "connect"
+  default     = "hub"
 }
 
 variable "location" {

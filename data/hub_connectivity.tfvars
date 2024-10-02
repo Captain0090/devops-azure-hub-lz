@@ -1,4 +1,4 @@
-location = "eastus"
+location = "germanywestcentral"
 
 VirtualNetworks = {
   vnet_hub = {
