@@ -47,6 +47,7 @@ variable "VirtualNetworks" {
     resource_groups_map_key       = optional(string, "network")
     virtual_network_address_space = list(string)
     subnets = map(object({
+      name                                      = string
       address_prefixes                          = list(string)
       private_endpoint_network_policies_enabled = optional(bool, false)
       service_endpoints                         = optional(set(string))
