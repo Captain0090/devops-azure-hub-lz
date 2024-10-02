@@ -6,8 +6,8 @@ module "azure_privatednszone" {
   tags                = local.tags
   virtual_network_links = {
     hubvnetlink = {
-      vnetlinkname   = "${module.network["vnet_hub"].vnet_name}-link"
-      vnetid = module.network["vnet_hub"].vnet_id
+      vnetlinkname = "${module.network["vnet_hub"].vnet_name}-link"
+      vnetid       = module.network["vnet_hub"].vnet_id
     }
   }
 }

@@ -1,13 +1,8 @@
-variable "project_name" {
-  type        = string
-  default     = "hub"
-  description = "Name of project for which the infra will create."
-}
 
 variable "environment" {
   type        = string
   description = "Name of the environment such as dev,UAT or prod"
-  default     = "connectivity"
+  default     = "hub"
 }
 
 variable "location" {
@@ -33,6 +28,9 @@ variable "resource_groups" {
     "privateDnsZones" = {
       name = "rg-dns"
     }
+    "jumpbox" = {
+      name = "rg-jumpserver"
+    }
   }
 }
 
@@ -49,6 +47,7 @@ variable "VirtualNetworks" {
     resource_groups_map_key       = optional(string, "network")
     virtual_network_address_space = list(string)
     subnets = map(object({
+      name                                      = string
       address_prefixes                          = list(string)
       private_endpoint_network_policies_enabled = optional(bool, false)
       service_endpoints                         = optional(set(string))
@@ -85,4 +84,68 @@ variable "private_dns_zones" {
   type        = list(string)
   description = "list of private dns zones"
   default     = []
+}
+
+variable "enable_bastion" {
+  type        = bool
+  description = "deploy bastion inside hub network"
+  default     = false
+}
+
+variable "deploy_jumpbox" {
+  type        = bool
+  description = "deploy jumpbox server."
+  default     = false
+}
+
+variable "vm_configuration" {
+  type = object({
+    nic_name                      = optional(string)
+    nic_ip_config_name            = optional(string)
+    enable_ip_forwarding          = optional(bool, false)
+    private_ip_address_allocation = optional(string)
+    admin_username                = optional(string)
+    enable_automatic_updates      = optional(bool, true)
+    encryption_at_host_enabled    = optional(bool, false)
+    license_type                  = optional(string)
+    vm_name                       = optional(string)
+    provision_vm_agent            = optional(bool, true)
+    vm_size                       = optional(string)
+    vm_zone                       = optional(string)
+    managed_identity_type         = optional(string, "SystemAssigned")
+    kv_disk_encryption_name       = optional(string)
+    source_image_reference = optional(object({
+      publisher = optional(string)
+      offer     = optional(string)
+      sku       = optional(string)
+      version   = optional(string)
+    }), {})
+    plan = optional(object({
+      publisher = optional(string, null)
+      name      = optional(string, null)
+      product   = optional(string, null)
+    }), {})
+    os_disk = optional(object({
+      name                      = optional(string, null)
+      storage_account_type      = optional(string, null)
+      size_gb                   = optional(number, null)
+      caching                   = optional(string, "ReadWrite")
+      write_accelerator_enabled = optional(bool, false)
+    }), {})
+    data_disks = optional(map(object({
+      name                 = optional(string, null)
+      storage_account_type = optional(string, null)
+      disk_size_gb         = optional(number, null)
+      caching              = optional(string, "ReadWrite")
+    })), {})
+  })
+  description = "(optional) The details of virtual machine."
+  default     = {}
+}
+
+variable "vm_password" {
+  type        = string
+  sensitive   = true
+  description = "VM Password"
+  default     = "P@ssword@!2024"
 }
