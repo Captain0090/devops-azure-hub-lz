@@ -52,7 +52,7 @@ variable "VirtualNetworks" {
       private_endpoint_network_policies_enabled = optional(bool, false)
       service_endpoints                         = optional(set(string))
       nsg_name                                  = string
-      nsg_rules                                 = optional(any, [])
+      nsg_rules                                 = any
       associate_udr                             = optional(bool, true)
       delegations = optional(list(
         object(
