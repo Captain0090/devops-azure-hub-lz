@@ -9,13 +9,13 @@ VirtualNetworks = {
       bastion = {
         name             = "snet-bastion"
         address_prefixes = ["10.68.0.128/26"]
-        nsg_rules        = "nsg-bastion-hub-connectivity-gwc-001"
+        nsg_name        = "nsg-bastion-hub-connectivity-gwc-001"
         nsg_rules        = []
       }
       vm = {
         name             = "snet-vm"
         address_prefixes = ["10.68.2.0/28"]
-        nsg_rules        = "nsg-vm-hub-connectivity-gwc-001"
+        nsg_name        = "nsg-vm-hub-connectivity-gwc-001"
         nsg_rules        = []
       }
     }
