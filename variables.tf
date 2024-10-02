@@ -53,6 +53,7 @@ variable "VirtualNetworks" {
       service_endpoints                         = optional(set(string))
       nsg_name                                  = string
       nsg_rules                                 = optional(list(any), [])
+      associate_udr                             = optional(bool,true)
       delegations = optional(list(
         object(
           {

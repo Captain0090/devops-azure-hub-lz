@@ -7,10 +7,100 @@ VirtualNetworks = {
     route_table_name              = "udr"
     subnets = {
       bastion = {
-        name             = "snet-bastion"
+        name             = "AzureBastionSubnet"
         address_prefixes = ["10.68.0.128/26"]
+        associate_udr    = false
         nsg_name         = "nsg-bastion-hub-connectivity-gwc-001"
-        nsg_rules        = []
+        nsg_rules        = [
+          {
+    name                       = "AllowHttpsInbound"
+    priority                   = 120
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    source_address_prefix      = "Internet"
+    destination_port_range     = 443
+    destination_address_prefix = "*"
+  },
+  {
+    name                       = "AllowGatewayManagerInbound"
+    priority                   = 130
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    source_address_prefix      = "GatewayManager"
+    destination_port_range     = 443
+    destination_address_prefix = "*"
+  },
+  {
+    name                       = "AllowAzureLoadBalancerInbound"
+    priority                   = 140
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    source_address_prefix      = "AzureLoadBalancer"
+    destination_port_range     = 443
+    destination_address_prefix = "*"
+  },
+  {
+    name                       = "AllowBastionHostCommunication"
+    priority                   = 150
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "*"
+    source_port_range          = "*"
+    source_address_prefix      = "VirtualNetwork"
+    destination_port_ranges    = [8080, 5701]
+    destination_address_prefix = "VirtualNetwork"
+  },
+  {
+    name                       = "AllowSshRdpOutbound"
+    priority                   = 100
+    direction                  = "Outbound"
+    access                     = "Allow"
+    protocol                   = "*"
+    source_port_range          = "*"
+    source_address_prefix      = "*"
+    destination_port_ranges    = [22, 3389] # rdp [3389] must be open for the bastion to accept the nsg
+    destination_address_prefix = "VirtualNetwork"
+  },
+  {
+    name                       = "AllowAzureCloudOutbound"
+    priority                   = 110
+    direction                  = "Outbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    source_address_prefix      = "*"
+    destination_port_range     = 443
+    destination_address_prefix = "AzureCloud"
+  },
+  {
+    name                       = "AllowBastionCommunication"
+    priority                   = 120
+    direction                  = "Outbound"
+    access                     = "Allow"
+    protocol                   = "*"
+    source_port_range          = "*"
+    source_address_prefix      = "VirtualNetwork"
+    destination_port_ranges    = [8080, 5701]
+    destination_address_prefix = "VirtualNetwork"
+  },
+  {
+    name                       = "AllowHttpOutbound"
+    priority                   = 130
+    direction                  = "Outbound"
+    access                     = "Allow"
+    protocol                   = "*"
+    source_port_range          = "*"
+    source_address_prefix      = "*"
+    destination_port_range     = 80
+    destination_address_prefix = "Internet"
+  }
+        ]
       }
       vm = {
         name             = "snet-vm"
