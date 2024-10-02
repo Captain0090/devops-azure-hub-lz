@@ -18,8 +18,5 @@ module "virtual_machine" {
   managed_identity_type      = var.vm_configuration.managed_identity_type
   nic_name                   = var.vm_configuration.nic_name
   nic_ip_config_name         = var.vm_configuration.nic_ip_config_name
-  depends_on = [
-    azurerm_network_security_group.vmsubnet
-  ]
   count = var.deploy_jumpbox ? 1 : 0
 }

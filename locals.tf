@@ -6,7 +6,7 @@ locals {
 
   tags = {
     Environment = var.environment
-    Project     = var.project_name
+    Project     = "Platform"
   }
 
   private_dns_zones = [
