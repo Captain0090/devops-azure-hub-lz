@@ -28,6 +28,9 @@ variable "resource_groups" {
     "privateDnsZones" = {
       name = "rg-dns"
     }
+    "jumpbox" = {
+      name = "rg-jumpserver"
+    }
   }
 }
 
