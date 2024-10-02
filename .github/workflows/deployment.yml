@@ -177,7 +177,7 @@ jobs:
     strategy:
       matrix:
         environment:
-          - hub-connectivity
+          - production
     runs-on: ubuntu-latest
     needs: [Plan]
     environment: ${{ matrix.environment }}
