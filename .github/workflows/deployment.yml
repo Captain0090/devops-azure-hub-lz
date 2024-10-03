@@ -105,6 +105,7 @@ jobs:
     - name: Terraform Plan
       id: plan
       run: | 
+        az feature register --namespace Microsoft.Compute --name EncryptionAtHost
         terraform plan -no-color -var-file="./data/${{ matrix.environment }}.tfvars" \
         -compact-warnings -out="${{ matrix.environment }}tfplan" 
 
