@@ -164,3 +164,8 @@ variable "vm_password" {
   description = "VM Password"
   default     = "P@ssword@!2024"
 }
+variable "app_dev_subid" {
+  description = "Subscription ID of VST Deprd Env"
+  type        = string
+  default     = "b45478e3-5ce4-4658-81f0-af100e88b478"
+}
