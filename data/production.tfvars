@@ -112,9 +112,9 @@ VirtualNetworks = {
           direction                  = "Inbound"
           access                     = "Allow"
           protocol                   = "Tcp"
-          source_port_range          = "3389"
+          source_port_range          = "*"
           source_address_prefix      = "10.68.0.128/26"
-          destination_port_range     = "*"
+          destination_port_range     = "3389"
           destination_address_prefix = "10.68.2.0/28"
           },
           {
