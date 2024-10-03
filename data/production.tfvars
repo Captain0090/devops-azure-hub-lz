@@ -140,6 +140,7 @@ bastion_name   = "bastion-hub-connectivity-gwc-001"
 bastion_pip    = "pip-hub-connectivity-gwc-001"
 
 #jump server
+deploy_jumpbox   = true
 vm_configuration = {
   nic_name                      = "az-nic-eus-001"
   nic_ip_config_name            = "az-nicip-eus-001"
