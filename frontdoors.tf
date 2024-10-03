@@ -118,7 +118,7 @@ resource "azapi_update_resource" "dev_frontdoor_system_identity" {
   })
 }
 
-data "azurerm_app_service" "vst-cityagenda" {
+data "azurerm_app_service" "cityagenda-dev" {
   name                = "app-cityagenda-dev-gwc-001"
   resource_group_name = "rg-cityagenda-dev-gwc-001"
   provider            = azurerm.app_dev
