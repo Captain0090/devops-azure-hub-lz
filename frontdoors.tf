@@ -68,7 +68,7 @@ module "cdn_frontdoor_dev" {
   firewall_policies = [
     {
       custom_resource_name = "cdnfrontdoorwafpolicydevconnect001"
-      name                 = "wafpolicy-cityagenda-dev-001"
+      name                 = "wafpolicy-cityagenda-001"
       enabled              = true
       mode                 = "Prevention"
       #redirect_url                      = ""
