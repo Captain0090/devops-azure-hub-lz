@@ -18,3 +18,10 @@ provider "azurerm" {
 provider "azapi" {
   use_oidc = true
 }
+
+provider "azurerm" {
+  features {}
+  alias                      = "app_dev"
+  subscription_id            = var.app_dev_subid
+  skip_provider_registration = true
+}
