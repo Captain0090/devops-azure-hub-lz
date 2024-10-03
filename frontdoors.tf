@@ -53,7 +53,7 @@ module "cdn_frontdoor_dev" {
       forwarding_protocol  = "MatchRequest"
       patterns_to_match    = ["/*"]
       supported_protocols  = ["Http", "Https"]
-      rule_sets_names      = []
+      rule_sets_names      = ["my_rule_set"]
       #   custom_domains_names = [""]
     }
   ]
