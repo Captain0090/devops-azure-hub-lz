@@ -33,7 +33,7 @@ module "cdn_frontdoor_dev" {
       private_link = {
         request_message        = "request from frontdoor"
         target_type            = "sites"
-        location               = "eastus"
+        location               = "germanywestcentral"
         private_link_target_id = data.azurerm_app_service.cityagenda-dev.id
       }
     }
