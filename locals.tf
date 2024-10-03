@@ -1,9 +1,12 @@
 locals {
-  resource_name_suffix = "${var.project_name}-${var.environment}-${var.location}-001"
+  locationshortname = {
+    germanywestcentral = "gwc"
+  }
+  resource_name_suffix = "${var.environment}-${try(local.locationshortname["germanywestcentral"], "${var.location}")}-001"
 
   tags = {
     Environment = var.environment
-    Project     = var.project_name
+    Project     = "Platform"
   }
 
   private_dns_zones = [

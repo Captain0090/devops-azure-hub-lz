@@ -8,9 +8,13 @@ terraform {
       source = "Azure/azapi"
     }
   }
-  #backend "azurerm" {}
+  backend "azurerm" {}
 }
 
 provider "azurerm" {
   features {}
+}
+
+provider "azapi" {
+  use_oidc = true
 }
