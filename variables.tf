@@ -52,8 +52,22 @@ variable "VirtualNetworks" {
       private_endpoint_network_policies_enabled = optional(bool, false)
       service_endpoints                         = optional(set(string))
       nsg_name                                  = string
-      nsg_rules                                 = optional(list(map(any)), [])
-      associate_udr                             = optional(bool, true)
+      nsg_rules = optional(list(object({
+        name                         = string
+        priority                     = string
+        direction                    = string
+        access                       = string
+        protocol                     = string
+        source_port_range            = string
+        source_port_ranges           = optional(list(string))
+        destination_port_range       = optional(string)
+        destination_port_ranges      = optional(list(string))
+        source_address_prefix        = optional(string)
+        source_address_prefixes      = optional(list(string))
+        destination_address_prefix   = optional(string)
+        destination_address_prefixes = optional(list(string))
+      })), [])
+      associate_udr = optional(bool, true)
       delegations = optional(list(
         object(
           {
