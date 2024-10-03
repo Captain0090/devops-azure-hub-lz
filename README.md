@@ -30,7 +30,7 @@
 |------|------|
 | [azapi_update_resource.dev_frontdoor_system_identity](https://registry.terraform.io/providers/Azure/azapi/latest/docs/resources/update_resource) | resource |
 | [azurerm_resource_group.rg](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) | resource |
-| [azurerm_app_service.vst-cityagenda](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/app_service) | data source |
+| [azurerm_app_service.cityagenda-dev](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/app_service) | data source |
 
 ## Inputs
 
