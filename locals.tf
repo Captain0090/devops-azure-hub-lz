@@ -17,6 +17,7 @@ locals {
     "privatelink.queue.core.windows.net",
     "privatelink.file.core.windows.net",
     "privatelink.azurewebsites.net",
-    "scm.privatelink.azurewebsites.net"
+    "scm.privatelink.azurewebsites.net",
+    "privatelink.redis.cache.windows.net"
   ]
 }
